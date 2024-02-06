@@ -1,0 +1,19 @@
+name: Build PR container
+
+on:
+  pull_request:
+    paths-ignore:
+      - ".github/workflows/**"
+      - ".gitignore"
+      - "**/*.md"
+      - ".github/dependabot.yaml"
+      - "charts/**"
+      - "Makefile"
+
+jobs:
+  testsomething:
+    name: Do something
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do something
+        run:  f=${RANDOM}; echo $f; [ $f -gt 24000 ]
