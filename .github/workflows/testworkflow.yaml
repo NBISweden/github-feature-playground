@@ -1,4 +1,4 @@
-name: Build PR container
+name: Some workflow
 
 on:
   pull_request:
