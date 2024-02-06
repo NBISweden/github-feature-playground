@@ -16,4 +16,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Do something
-        run:  f=${RANDOM}; echo $f; [ $f -gt 24000 ]
+        run:  f=${RANDOM}; echo $f; sleep 100; [ $f -gt 24000 ]
