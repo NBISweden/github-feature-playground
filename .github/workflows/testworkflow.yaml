@@ -3,18 +3,19 @@ name: Some workflow
 on:
   merge_group:
   pull_request:
-    paths-ignore:
-      - ".github/workflows/**"
-      - ".gitignore"
-      - "**/*.md"
-      - ".github/dependabot.yaml"
-      - "charts/**"
-      - "Makefile"
+  push:
 
 jobs:
   testsomething:
-    name: Do something
+    name: Do something/
     runs-on: ubuntu-latest
     steps:
       - name: Do something
         run:  f=${RANDOM}; echo $f; sleep 100; [ $f -gt 24000 ]
+
+    name: File has an r in the name
+    if: ${{ contains(join(github.event.push.commits.added,','), 'r') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do something
+        run:  f=${RANDOM}; echo $f; sleep 10; [ $f -gt 24000 ]
