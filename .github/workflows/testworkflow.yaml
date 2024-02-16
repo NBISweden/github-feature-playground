@@ -25,6 +25,9 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
+      - name: An echo
+        run:  echo '${{ toJSON(github.event.commits) }}'
+
       - name: Get paths
         uses: actions/github-script@v7
         env:
