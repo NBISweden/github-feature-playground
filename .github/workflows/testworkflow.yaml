@@ -13,6 +13,7 @@ jobs:
       - name: Do something
         run:  f=${RANDOM}; echo $f; sleep 100; [ $f -gt 24000 ]
 
+  anotherjob:
     name: File has an r in the name
     if: ${{ contains(join(github.event.push.commits.added,','), 'r') }}
     runs-on: ubuntu-latest
