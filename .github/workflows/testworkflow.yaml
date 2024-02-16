@@ -20,3 +20,23 @@ jobs:
     steps:
       - name: Do something
         run:  f=${RANDOM}; echo $f; sleep 10; [ $f -gt 24000 ]
+
+  getcommits:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get paths
+        uses: actions/github-script@v7
+        env:
+          COMMITS: ${{ toJSON(github.event.commits) }}
+        with:
+          result-encoding: string
+          script: |
+              const commits = JSON.parse(process.env.COMMITS);
+              var changed = [];
+              for (const commit of commits) {
+                for (const file of commit.added) {
+                    changed.push(file);
+                }
+              }
+              return changed.join(',');
